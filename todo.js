@@ -14,6 +14,7 @@ taskname.addEventListener('keypress',function(e){
   id++;
   tasks.push(obj);
   addDom(obj);
+  setLocalStorage();
   taskname.value = "";
   console.log(obj);
   console.log(tasks);
@@ -46,6 +47,7 @@ function addDom(task){
            item.status = newstatus;
       return item;
   })
+  setLocalStorage();
   console.log(tasks);
 })
 
@@ -57,15 +59,26 @@ delbtn.addEventListener('click',function(){
     if(item.id!=task.id)
       return true;
   })
+  setLocalStorage();
   console.log(tasks);
 })
+// let editbtn = document.createElement('button');
+// editbtn.innerText = "Edit";
+// editbtn.addEventListener('load',function(){
+//   taskdiv.edit();
 
 
-
- 
+// })
   taskdiv.append(span);
   taskdiv.append(ckb);
+  taskdiv.append(editbtn);
   taskdiv.append(delbtn);
   tasklist.append(taskdiv);
 }
+function setLocalStorage(){
+  localStorage.setItem("tasks", JSON.stringify(tasks))
+}
+function getLocalStorage(){
 
+}
+getLocalStorage();

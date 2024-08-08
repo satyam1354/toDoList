@@ -18,14 +18,6 @@ taskname.addEventListener('keypress',function(e){
   console.log(obj);
   console.log(tasks);
 
-     
-    //  obj.title = taskname.value;
-    //  obj.status = taskname.value;
-    //  obj.id = taskname.id;
-    // task.push(taskname.value); 
-    // console.log(task)
-    // addDom();
-    // taskname.value="";
  }
 })
 

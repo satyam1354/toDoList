@@ -16,7 +16,7 @@ taskname.addEventListener('keypress',function(e){
   addDom(obj);
   setLocalStorage();
   taskname.value = "";
-  console.log(obj);
+  //console.log(obj);
   console.log(tasks);
 
  }
@@ -32,7 +32,7 @@ function addDom(task){
 
   ckb.addEventListener('click',function(){
     console.log(ckb.checked); 
-    let newstatus= "";
+    let newstatus = "";
     if(ckb.checked){
         newstatus = "Completed";
         span.style.textDecoration = "line-through";
@@ -53,7 +53,8 @@ function addDom(task){
 
 let delbtn = document.createElement("button");
 delbtn.innerText = "DEL";
-delbtn.addEventListener('click',function(){
+delbtn.addEventListener('click',function(e){
+  console.log(e);
   taskdiv.remove();
   tasks = tasks.filter(item=>{
     if(item.id!=task.id)
@@ -67,11 +68,10 @@ delbtn.addEventListener('click',function(){
 // editbtn.addEventListener('load',function(){
 //   taskdiv.edit();
 
-
 // })
   taskdiv.append(span);
   taskdiv.append(ckb);
-  taskdiv.append(editbtn);
+  //taskdiv.append(editbtn);
   taskdiv.append(delbtn);
   tasklist.append(taskdiv);
 }
@@ -79,6 +79,11 @@ function setLocalStorage(){
   localStorage.setItem("tasks", JSON.stringify(tasks))
 }
 function getLocalStorage(){
-
+    //tasks = JSON.parse(localStorage.getItem("tasks"));
+    tasks = (localStorage.getItem("tasks")?JSON.parse(localStorage.getItem("tasks")):[]);
+    console.log(tasks);
+    tasks.forEach(element=>{
+      addDom(element);
+    })
 }
 getLocalStorage();
